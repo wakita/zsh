@@ -1,0 +1,44 @@
+alias la="ls -aFC"
+alias lf="ls -FC"
+alias ll="ls -al"
+
+drop() { cd $DROPBOX/$*; }
+desktop() { drop Desktop/$*; }
+today() { cd $TODAYSWORK/$*; }
+
+classes() { drop doc/classes/$*; }
+cs1() { classes cs1/$*; }
+
+project() { drop research/projects/$*; }
+macro() { project exjs/$*; }
+
+write() {
+  cd $TODAYSWORK
+  case `hostname` in
+  (dancer*|mini2013kw*) sudo ifconfig en0 down;;
+  esac
+  mvim .
+}
+alias ifup="sudo ifconfig en0 up"
+
+
+alias preview="open -a Preview"
+alias mvim="open -a MacVim"
+#alias mvim="open -a /opt/brew/Cellar/macvim/7.4-71/MacVim.app"
+alias cot="open -a coteditor"
+sgit() {
+  if [ -d .git ]; then args=`pwd`; fi
+  open -b com.syntevo.smartgithg --args $args $*;
+}
+javaman() { open "$MYWEBSITE/man/java/jdk-6u21-ja/api/overview-summary.html"; }
+
+sushi() {
+  d=/Volumes/naisho/sushi/13
+  if [ "$1" = '' ]; then cd $d
+  else cd $d/2/$1
+  fi
+  PATH=$PATH:$d/bin;
+}
+
+alias r="R"
+alias coq="coqtop -batch -l"
