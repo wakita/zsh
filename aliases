@@ -21,15 +21,19 @@ write() {
 }
 alias ifup="sudo ifconfig en0 up"
 
-
 alias preview="open -a Preview"
-alias mvim="open -a MacVim"
+alias mvim="/Applications/MacVim.app/Contents/MacOS/mvim"
+alias vim="/Applications/MacVim.app/Contents/MacOS/vim"
+alias vi="vi"
+#alias mvim="open -a MacVim --args"
 #alias mvim="open -a /opt/brew/Cellar/macvim/7.4-71/MacVim.app"
 alias cot="open -a coteditor"
+
 sgit() {
   if [ -d .git ]; then args=`pwd`; fi
   open -b com.syntevo.smartgithg --args $args $*;
 }
+
 javaman() { open "$MYWEBSITE/man/java/jdk-6u21-ja/api/overview-summary.html"; }
 
 sushi() {
@@ -38,7 +42,9 @@ sushi() {
   else cd $d/2/$1
   fi
   PATH=$PATH:$d/bin;
+  unset d
 }
 
 alias r="R"
+
 alias coq="coqtop -batch -l"
