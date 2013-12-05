@@ -1,5 +1,8 @@
 ## General settings
 
+path+=/opt/local/bin
+path+=/opt/local/sbin
+
 export MYWEBSITE="http://localhost/~wakita/"
 
 export CDPATH=".:$DROPBOX"
@@ -10,7 +13,7 @@ export LC_CTYPE="ja_JP.UTF-8"
 export LV='-i -Ou8'
 export PAGER='lv'
 export LESS='-si'
-export EDITOR='mvim -f'
+export EDITOR='/Applications/MacVim.app/Contents/MacOS/mvim -f'
 
 export GREP_OPTIONS='-i'
 
