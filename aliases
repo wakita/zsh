@@ -23,7 +23,7 @@ alias ifup="sudo ifconfig en0 up"
 
 alias preview="open -a Preview"
 alias mvim="/Applications/MacVim.app/Contents/MacOS/mvim"
-alias vim="/Applications/MacVim.app/Contents/MacOS/vim"
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias vi="vi"
 #alias mvim="open -a MacVim --args"
 #alias mvim="open -a /opt/brew/Cellar/macvim/7.4-71/MacVim.app"
@@ -47,4 +47,4 @@ sushi() {
 
 alias r="R"
 
-alias coq="coqtop -batch -l"
+alias ocaml="rlwrap /usr/local/bin/ocaml"
