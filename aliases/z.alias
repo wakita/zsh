@@ -23,25 +23,8 @@ write() {
 alias ifup="sudo ifconfig en0 up"
 
 alias preview="open -a Preview"
-#alias mvim="/Applications/MacVim.app/Contents/MacOS/mvim"
-alias vim="Vim"
-#alias vi="vi"
-#alias mvim="open -a MacVim --args"
-#alias mvim="open -a /opt/brew/Cellar/macvim/7.4-71/MacVim.app"
 alias cot="open -a coteditor"
-
-sgit() {
-  if [ -d .git ]; then args=`pwd`; fi
-  open -b com.syntevo.smartgithg --args $args $*;
-}
-
-git-rev() {
-  log=`git rev-list --full-history --all --abbrev=4 --abbrev-commit`
-  date=`date +%Y%m%d`
-  rev=`echo $log | wc -l | sed -e 's/^ *//'`
-  hash=`echo $log | head -1`
-  export PROJECT_REV=`printf "%s-%03d:%s" $date $rev $hash`
-}
+alias vim="Vim"
 
 javaman() { open "$MYWEBSITE/man/java/jdk-6u21-ja/api/overview-summary.html"; }
 alias eclimd="/Applications/eclipse/eclimd"
