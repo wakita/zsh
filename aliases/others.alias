@@ -1,0 +1,63 @@
+alias la="ls -aFC"
+alias lf="ls -FC"
+alias ll="ls -al"
+
+drop() { cd $DROPBOX/$*; }
+cryptor() { cd /Volumes/Boxcryptor/Dropbox/$*; }
+desktop() { drop Desktop/$*; }
+today() { cd $TODAYSWORK/$*; }
+
+classes() { drop doc/classes/$*; }
+cs1() { classes cs1/$*; }
+
+project() { drop research/projects/$*; }
+macro() { project exjs/$*; }
+
+write() {
+  cd $TODAYSWORK
+  case `hostname` in
+  (dancer*|mini2013kw*) sudo ifconfig en0 down;;
+  esac
+  mvim .
+}
+alias ifup="sudo ifconfig en0 up"
+
+alias preview="open -a Preview"
+#alias mvim="/Applications/MacVim.app/Contents/MacOS/mvim"
+alias vim="Vim"
+#alias vi="vi"
+#alias mvim="open -a MacVim --args"
+#alias mvim="open -a /opt/brew/Cellar/macvim/7.4-71/MacVim.app"
+alias cot="open -a coteditor"
+
+sgit() {
+  if [ -d .git ]; then args=`pwd`; fi
+  open -b com.syntevo.smartgithg --args $args $*;
+}
+
+git-rev() {
+  log=`git rev-list --full-history --all --abbrev=4 --abbrev-commit`
+  date=`date +%Y%m%d`
+  rev=`echo $log | wc -l | sed -e 's/^ *//'`
+  hash=`echo $log | head -1`
+  export PROJECT_REV=`printf "%s-%03d:%s" $date $rev $hash`
+}
+
+javaman() { open "$MYWEBSITE/man/java/jdk-6u21-ja/api/overview-summary.html"; }
+alias eclimd="/Applications/eclipse/eclimd"
+
+sushi() {
+  d=/Volumes/Boxcryptor/Dropbox/doc/naisho/sushi/13
+  if [ "$1" = '' ]; then cd $d
+  else cd $d/2/$1
+  fi
+  PATH=$PATH:$d/bin;
+  unset d
+}
+
+alias r="R"
+
+alias ocaml="rlwrap /usr/local/bin/ocaml"
+alias racket="rlwrap /Applications/Racket\ v5.3.6/bin/racket"
+
+if [ -f $HOME/.zaliases ]; then source $HOME/.zaliases; fi
