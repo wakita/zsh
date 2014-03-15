@@ -1,7 +1,7 @@
 ## General settings
 
-path+=/opt/local/bin
-path+=/opt/local/sbin
+path+=/usr/local/bin
+path+=/Applications/MacVim.app/Contents/MacOS
 
 export MYWEBSITE="http://localhost/~wakita/"
 
@@ -31,16 +31,35 @@ export DYLD_FALLBACK_LIBRARY_PATH=$HOME/lib:$brew/lib:/usr/local/lib:/lib:/usr/l
 export C_INCLUDE_PATH=$brew/include
 export CPLUS_INCLUDE_PATH=$brew/include
 
+# Zsh
+
+autoload run-help
+export HELPDIR=$brew/share/zsh/helpfiles
+
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
+
+# Java
+
+if [ -d /usr/libexec/java_home ]; then
+  export JAVA_HOME=`/usr/libexec/java_home`
+fi
+
+# X10
+
+export X10_HOME=$DROPBOX/Applications/x10-2.4.1_macosx_x86
+path+=$X10_HOME/bin
+# export X10_HOSTFILE=<hostfile>
+# export X10_NPLACES=<num_places> <CLASSPATH>
 
 ## TeX and related tools
 
+path+=/usr/local/texlive/2013/bin/x86_64-darwin
 export TEXINPUTS=:.//:$brew/Cellar/noweb2.11b/tex//
 export BIBINPUTS=$HOME/research:.//
 
 ## OCaml and OPAM configuration
-. /Users/wakita/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
+. /Users/wakita/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+#export OPAMSWITCH=4.00.1+annot
 
 ## Scheme section
 
@@ -63,10 +82,6 @@ export YPSILON_ACC="$HOME/.ypsilon"
 ## Python
 
 export PYTHONPATH="$HOME/lib/python2.7/site-packages"
-
-## Unison file synchronizer
-
-export UNISONLOCALHOSTNAME=rudolf
 
 ## Revision control systems
 
@@ -100,4 +115,6 @@ export D4D_DATA_ROOT=$HOME/data/d4d
 export D4D_PROJECT_ROOT=$DROPBOX/research/projects/d4d
 unset brew
 
-cd $DROPBOX
+if [ -d $DROPBOX ]; then
+  cd $DROPBOX
+fi

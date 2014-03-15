@@ -1,2 +1,4 @@
-export ZDOTDIR=$HOME/Dropbox/lib/zsh
+export DROPBOX=<Dropbox Path>
+export ZDOTDIR=$DROPBOX/lib/zsh
 export _Local_Machine_=<Machine>
+export UNISONLOCALHOSTNAME=dropbox

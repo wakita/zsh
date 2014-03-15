@@ -5,25 +5,24 @@
 
 # Path to your oh-my-zsh configuration.
 ZSH=$ZDOTDIR/oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
 for dir in \
-  /Users/wakita/Dropbox/bin \
-  /opt/brew/bin \
   /opt/brew/share/npm/bin \
+  /opt/brew/bin
+do
+  if [[ -d $dir ]]; then path[1,0]=$dir; fi
+done
+
+for dir in \
+  $DROPBOX/bin \
   ./bin
 do
   if [[ -d $dir ]]; then path+=$dir; fi
 done
 
-COMMON_BASHRC=$DROPBOX/lib/dotfiles/bashrc.txt
-if [ -r $COMMON_BASHRC ]; then . $COMMON_BASHRC; fi
-
+# COMMON_BASHRC=$DROPBOX/lib/dotfiles/bashrc.txt
+# if [ -r $COMMON_BASHRC ]; then . $COMMON_BASHRC; fi
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -42,10 +41,10 @@ if [ -r $COMMON_BASHRC ]; then . $COMMON_BASHRC; fi
 DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
+DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -61,4 +60,7 @@ DISABLE_LS_COLORS="true"
 plugins=(git itunes)
 
 if [ -r $ZSH/oh-my-zsh.sh ]; then source $ZSH/oh-my-zsh.sh; fi
-if [ -r $ZDOTDIR/aliases ]; then source $ZDOTDIR/aliases; fi
+
+if [ -d $ZDOTDIR/aliases ]; then
+  for f in $ZDOTDIR/aliases/*.alias; do source $f; done
+fi
