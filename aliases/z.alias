@@ -42,5 +42,10 @@ alias r="R"
 
 alias ocaml="rlwrap /usr/local/bin/ocaml"
 alias racket="rlwrap /Applications/Racket\ v5.3.6/bin/racket"
+Scala() {
+  open -n -F http://localhost/man/scala/scala-docs-2.10.3/
+  mvim .
+  sbt
+}
 
 if [ -f $HOME/.zaliases ]; then source $HOME/.zaliases; fi
