@@ -83,6 +83,10 @@ export YPSILON_ACC="$HOME/.ypsilon"
 
 export PYTHONPATH="$HOME/lib/python2.7/site-packages"
 
+## Ruby
+
+PATH=$(brew --prefix ruby)/bin:$PATH
+
 ## Revision control systems
 
 export CVS_RSH=ssh
