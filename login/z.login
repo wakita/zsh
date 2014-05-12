@@ -5,7 +5,7 @@ path=(/Applications/MacVim.app/Contents/MacOS $path)
 
 export MYWEBSITE="http://localhost/~wakita/"
 
-cdpath=(.. $HOME/projects $DROPBOX $DROPBOX/doc/classes $DROPBOX/research/projects)
+cdpath=(.. $HOME/projects $DROPBOX $DROPBOX/doc $DROPBOX/doc/classes $DROPBOX/research/projects)
 
 export LANGUAGE="ja_JP.UTF-8"
 export LC_CTYPE="ja_JP.UTF-8"
