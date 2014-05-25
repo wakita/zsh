@@ -1,0 +1,10 @@
+mypaper="$DROPBOX/research/mypaper"
+pdflatexmk() {
+  env PAPER="$mypaper/$1" BUILD=pdflatex "$TEXMKCONF"/mk
+}
+platexmk() {
+  env PAPER="$mypaper/$1" BUILD=platex   "$TEXMKCONF"/mk
+}
+uplatexmk() {
+  env PAPER="$mypaper/$1" BUILD=uplatex  "$TEXMKCONF"/mk
+}

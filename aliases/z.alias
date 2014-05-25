@@ -14,7 +14,7 @@ project() { drop research/projects/$*; }
 macro() { project exjs/$*; }
 
 write() {
-  cd $TODAYSWORK
+  cd "$TODAYSPAPER"
   case `hostname` in
   (dancer*|mini2013kw*) sudo ifconfig en0 down;;
   esac

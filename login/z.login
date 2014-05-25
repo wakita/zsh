@@ -56,6 +56,7 @@ path+=$X10_HOME/bin
 path+=/usr/local/texlive/2013/bin/x86_64-darwin
 export TEXINPUTS=:.//:$brew/Cellar/noweb2.11b/tex//
 export BIBINPUTS=$DROPBOX/research:.//
+export TEXMKCONF=$DROPBOX/lib/tex/mk
 
 ## OCaml and OPAM configuration
 . /Users/wakita/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
