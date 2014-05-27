@@ -1,4 +1,14 @@
-export DROPBOX=<Dropbox Path>
-export ZDOTDIR=$DROPBOX/lib/zsh
-export _Local_Machine_=<Machine>
+loadrc() { [ -r $1 ] && . $1 }
+loadall() { [ -d $1 ] && for rc in $1/*; do loadrc $rc; done }
+
 export UNISONLOCALHOSTNAME=dropbox
+path=(/usr/bin /bin /usr/sbin /sbin)
+
+for dir in \
+  /opt/brew/share/npm/bin \
+  /opt/brew/bin \
+  "$DROPBOX/bin"
+do [ -d "$dir" ] && path[1,0]=$dir
+done
+
+path[1,0]=bin

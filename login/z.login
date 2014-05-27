@@ -26,6 +26,7 @@ brew=/opt/brew
 # for p in $brew/man /usr/share/man /usr/local/share/man /usr/X11/man; do
 #   if [[ -d $p ]]; then manpath+=$p; fi
 # done
+manpath+=$brew/share/man
 export LD_LIBRARY_PATH=$brew/lib
 export DYLD_FALLBACK_LIBRARY_PATH=$HOME/lib:$brew/lib:/usr/local/lib:/lib:/usr/lib
 export C_INCLUDE_PATH=$brew/include
