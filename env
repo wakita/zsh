@@ -2,13 +2,26 @@ loadrc() { [ -r $1 ] && . $1 }
 loadall() { [ -d $1 ] && for rc in $1/*; do loadrc $rc; done }
 
 export UNISONLOCALHOSTNAME=dropbox
-path=(/usr/bin /bin /usr/sbin /sbin)
+path=(/Applications/MacVim.app/Contents/MacOS /usr/bin /bin /usr/sbin /sbin /usr/local/bin)
+
+brew=/opt/brew
 
 for dir in \
-  /opt/brew/share/npm/bin \
-  /opt/brew/bin \
+  $brew/share/npm/bin \
+  $brew/bin \
+  /usr/local/texlive/2013/bin/x86_64-darwin \
   "$DROPBOX/bin"
 do [ -d "$dir" ] && path[1,0]=$dir
 done
+
+manpath+=$brew/share/man
+
+export LD_LIBRARY_PATH=$brew/lib
+export DYLD_FALLBACK_LIBRARY_PATH=$HOME/lib:$brew/lib:/usr/local/lib:/lib:/usr/lib
+
+export C_INCLUDE_PATH=$brew/include
+export CPLUS_INCLUDE_PATH=$brew/include
+
+cdpath=(.. $HOME/projects $DROPBOX/doc $DROPBOX/doc/classes $DROPBOX/research/projects $DROPBOX/research/mypaper $DROPBOX)
 
 path[1,0]=bin
