@@ -2,50 +2,68 @@ alias la="ls -aFC"
 alias lf="ls -FC"
 alias ll="ls -al"
 
+alias grep="grep -i"
+
 drop() { cd $DROPBOX/$*; }
-cryptor() { cd /Volumes/Boxcryptor/Dropbox/$*; }
+google() { cd $GDRIVE/$*; }
+cryptor() { cd /Volumes/Boxcryptor/Dropbox/encrypted/$*; }
+score() { cryptor doc/classes/score/$* }
 desktop() { drop Desktop/$*; }
 today() { cd $TODAYSWORK/$*; }
+isweb() { drop work/sysadmin/isweb/$*; }
 
 classes() { drop doc/classes/$*; }
-cs1() { classes cs1/$*; }
+#il() { google education/2017.il/il1j; }
+il() { classes il/sites/$*; }
+prg() { classes q3-prg1/$*; }
 
+notes() { drop research/notes/$*; }
 project() { drop research/projects/$*; }
 macro() { project exjs/$*; }
+glvis() { source activate glvis; drop work/glvis/$*; }
+assistant() { open -a $CONDA_PREFIX/bin/Assistant.app $*; }
+designer() { open -a $CONDA_PREFIX/bin/Designer.app $*; }
+linguist() { open -a $CONDA_PREFIX/bin/Linguist.app $*; }
 
-write() {
-  cd "$TODAYSPAPER"
-  case `hostname` in
-  (dancer*|mini2013kw*) sudo ifconfig en0 down;;
-  esac
-  mvim .
-}
+ta() { tmux attach-session $*; }
+
+#write() {
+#  cd "$TODAYSPAPER"
+#  case `hostname` in
+#  (dancer*|mini2013kw*) sudo ifconfig en0 down;;
+#  esac
+#  mvim .
+#}
+write() { $TEXMKCONF/write $*; }
 alias ifup="sudo ifconfig en0 up"
 
 alias preview="open -a Preview"
 alias cot="open -a coteditor"
 alias vim="Vim"
+alias mvim="\mvim -c \"cd %:p:h\""
 
 javaman() { open "$MYWEBSITE/man/java/jdk-6u21-ja/api/overview-summary.html"; }
 alias eclimd="/Applications/eclipse/eclimd"
 
-sushi() {
-  d=/Volumes/Boxcryptor/Dropbox/doc/naisho/sushi/13
-  if [ "$1" = '' ]; then cd $d
-  else cd $d/2/$1
-  fi
-  PATH=$PATH:$d/bin;
-  unset d
-}
+# sushi() {
+#   d=/Volumes/Boxcryptor/Dropbox/doc/naisho/sushi/13
+#   if [ "$1" = '' ]; then cd $d
+#   else cd $d/2/$1
+#   fi
+#   PATH=$PATH:$d/bin;
+#   unset d
+# }
 
 alias r="R"
 
 alias ocaml="rlwrap /usr/local/bin/ocaml"
-alias racket="rlwrap /Applications/Racket\ v5.3.6/bin/racket"
+alias racket="rlwrap /Applications/Racket\ v6*/bin/racket"
 Scala() {
   open -n -F http://localhost/man/scala/scala-docs-2.10.3/
   mvim .
   sbt
 }
+
+alias activate='source ~/anaconda3/bin/activate $*'
 
 if [ -f $HOME/.zaliases ]; then source $HOME/.zaliases; fi

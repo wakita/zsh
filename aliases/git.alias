@@ -1,6 +1,6 @@
 sgit() {
   if [ -d .git ]; then args=`pwd`; fi
-  open -b com.syntevo.smartgithg --args $args $*;
+  open -b com.syntevo.smartgit --args $args $*;
 }
 
 git-rev() {

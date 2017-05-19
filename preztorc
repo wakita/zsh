@@ -1,0 +1,21 @@
+# zmodules="osx prompt utility"
+
+loadrc $ZDOTDIR/.prezto/runcom/zshrc
+
+zstyle ':prezto:load' pmodule 'environment' 'terminal'
+
+case "$OSTYPE" in
+(darwin*)
+  zstyle ':prezto:load' pmodule 'environment' 'osx'
+  zstyle ':prezto:module:git:info:context:subcontext' format 'string'
+  ;;
+(msys)
+  zstyle ':prezto:load' pmodule 'environment' 'prompt'
+  zstyle ':prezto:module:info:context:subcontext' format 'string'
+  ;;
+esac
+
+prompt cloud
+
+# zstyle ':prezto:load' pmodule 'environment' 'utility'
+

@@ -1,27 +1,41 @@
-loadrc() { [ -r $1 ] && . $1 }
-loadall() { [ -d $1 ] && for rc in $1/*; do loadrc $rc; done }
-
 export UNISONLOCALHOSTNAME=dropbox
-path=(/Applications/MacVim.app/Contents/MacOS /usr/bin /bin /usr/sbin /sbin /usr/local/bin)
 
-brew=/opt/brew
+# brew=/opt/brew
 
-for dir in \
-  $brew/share/npm/bin \
-  $brew/bin \
-  /usr/local/texlive/2013/bin/x86_64-darwin \
-  "$DROPBOX/bin"
-do [ -d "$dir" ] && path[1,0]=$dir
-done
-
-manpath+=$brew/share/man
-
-export LD_LIBRARY_PATH=$brew/lib
-export DYLD_FALLBACK_LIBRARY_PATH=$HOME/lib:$brew/lib:/usr/local/lib:/lib:/usr/lib
-
-export C_INCLUDE_PATH=$brew/include
-export CPLUS_INCLUDE_PATH=$brew/include
-
-cdpath=(.. $HOME/projects $DROPBOX/doc $DROPBOX/doc/classes $DROPBOX/research/projects $DROPBOX/research/mypaper $DROPBOX)
+for d in \
+  /usr/local/bin \
+  /usr/local/share/npm/bin \
+  /usr/texbin \
+  /sbin \
+  /usr/sbin \
+  /bin \
+  /Applications/MacVim.app/Contents/MacOS \
+  "$DROPBOX/bin" \
+  "$DROPBOX/win/bin" \
+  $HOME/bin
+do [ -d "$d" ] && path[1,0]=$d; done
 
 path[1,0]=bin
+
+for d in \
+  $HOME/projects \
+  $DROPBOX/doc \
+  $DROPBOX/doc/classes \
+  $DROPBOX/research/projects \
+  $DROPBOX/research/mypaper \
+  $DROPBOX
+do [ -d "$d" ] && cdpath+=$d; done
+
+# The following should be described in CMake
+case ("$OSTYPE") {
+  darwin*)
+    #export LD_LIBRARY_PATH=$brew/lib
+    #export DYLD_FALLBACK_LIBRARY_PATH=$HOME/lib:$brew/lib:/usr/local/lib:/lib:/usr/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=$HOME/lib:/usr/local/lib:/lib:/usr/lib
+
+    #export C_INCLUDE_PATH=$brew/include
+    #export CPLUS_INCLUDE_PATH=$brew/include
+    ;;
+esac
+
+export MYPAPER="$DROPBOX/research/mypaper"

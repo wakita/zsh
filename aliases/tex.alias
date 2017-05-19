@@ -1,4 +1,3 @@
-export MYPAPER="$DROPBOX/research/mypaper"
 pdflatexmk() {
   env PAPER="$MYPAPER/$1" BUILD=pdflatex "$TEXMKCONF"/mk
 }
@@ -8,3 +7,20 @@ platexmk() {
 uplatexmk() {
   env PAPER="$MYPAPER/$1" BUILD=uplatex  "$TEXMKCONF"/mk
 }
+
+_paper_() {
+  cd "$DROPBOX"/research/mypaper/$1
+  paper
+}
+_talk_() {
+  cd "$DROPBOX"/research/mypaper/$1
+  talk
+}
+
+alias paper1="_paper_ $PAPER1"
+alias paper2="_paper_ $PAPER2"
+alias paper3="_paper_ $PAPER3"
+
+alias talk1="_paper_ $PAPER1"
+alias talk2="_paper_ $PAPER2"
+alias talk3="_paper_ $PAPER3"

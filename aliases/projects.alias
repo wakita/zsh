@@ -1,0 +1,29 @@
+setup() {
+  if [ -f bin/setup$1 ]; then . bin/setup$1; fi
+}
+
+prj1() {
+  cd $DROPBOX/research/projects/agiwx/$*;
+  mvim .
+}
+
+prj2() {
+  cd $HOME/Dropbox/work/opengl/dojo;
+  setup
+}
+
+glsb() {
+  cd $DROPBOX/research/projects/exjs/$*;
+  mvim .
+}
+
+mingw=/c/mingw/mingw64
+if [ -d "$mingw" ]; then
+  mingw() {
+    path[1,0]=$mingw/bin
+  }
+fi
+
+cmake-root() {
+  . "$DROPBOX"/win/bin/cmake-root
+}
