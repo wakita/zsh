@@ -1,4 +1,4 @@
-loadrc .zprezto/runcoms/zlogin
+loadrc $ZPREZTO_RC/zlogin
 loadall $ZDOTDIR/login
 loadrc $HOME/.zlogin
 

@@ -1,4 +1,5 @@
-export DROPBOX=$HOME/Dropbox
-export ZDOTDIR="$DROPBOX/lib/zsh"
+# Copy this file to $HOME/.zshenv
+
 export _Local_Machine_=<Machine Name>
-. $ZDOTDIR/.zshenv
+
+. "$HOME/Dropbox/lib/zsh/.zshenv"

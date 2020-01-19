@@ -9,16 +9,17 @@ uplatexmk() {
 }
 
 _paper_() {
-  cd "$DROPBOX"/research/mypaper/$1
-  paper
+  cd $1
+  bin/paper
 }
+
 _talk_() {
   cd "$DROPBOX"/research/mypaper/$1
   talk
 }
 
-alias paper1="_paper_ $PAPER1"
-alias paper2="_paper_ $PAPER2"
+alias paper1="_paper_ $DROPBOX/projects/dcmds"
+alias paper2="_paper_ $DROPBOX/projects/iv19-svf"
 alias paper3="_paper_ $PAPER3"
 
 alias talk1="_paper_ $PAPER1"

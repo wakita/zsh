@@ -1,9 +1,13 @@
-export HISTFILE=$HOME/.zsh_hisory
-export SAVEHIST=10000
-export GDRIVE="$HOME/Google ドライブ"
+export DROPBOX="$HOME/Dropbox"
+export ICLOUD="$HOME/icloud"
+export GDRIVE="$HOME/gdrive"
+
+export ZDOTDIR="$DROPBOX/lib/zsh"
+export ZPREZTO="$ZDOTDIR/.zprezto"
+export ZPREZTO_RC="$ZPREZTO/runcoms"
 
 loadrc() { [ -r $1 ] && . $1 }
 loadall() { [ -d $1 ] && for rc in $1/*; do loadrc $rc; done }
 
-loadrc "$ZDOTDIR/.zprezto/runcom/zshenv"
+loadrc "$ZPREZTO_RC/zshenv"
 loadrc "$ZDOTDIR/env"

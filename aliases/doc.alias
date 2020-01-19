@@ -1,1 +1,18 @@
 alias help-beamer='open /usr/local/texlive/2013/texmf-dist/doc/latex/beamer/doc/beameruserguide.pdf'
+
+alias m19='hdiutil attach $DROPBOX/doc/wg/秘密/master2019.dmg; cd /Volumes/master2019'
+detach() {
+  case `pwd` in
+  /Volumes/*)
+    volume=`pwd | sed -e 's|\(/Volumes/[^/]*\)/.*|\1|'`
+    drop
+    hdiutil detach  $volume
+    ;;
+  esac
+}
+
+function review() {
+  if [ "$1" != "" ]; then cd $DROPBOX/doc/review/past/2019/*$1*
+  else cd $DROPBOX/doc/review/past/2019
+  fi
+}

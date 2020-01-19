@@ -3,21 +3,21 @@
 # zshrc    (if interactive shell)
 # zlogin   (if login shell)
 
-mkdir -p ~/.tmp/zsh
+mkdir -p $HOME/.tmp/zsh
+export HISTFILE=$HOME/.tmp/zsh/history
+export SAVEHIST=10000
 autoload -U compinit
-compinit -d ~/.tmp/zsh/compdump
+compinit -d $HOME/.tmp/zsh/compdump
+zstyle ':completion:*' cache-path $HOME/.tmp/zsh/compcache
 
-# source $ZDOTDIR/oh-my-zsh.zsh
-loadrc $ZDOTDIR/.zprezto/init.zsh
+loadrc $ZPREZTO_RC/zshrc
 loadrc $ZDOTDIR/preztorc
-HISTFILE=~/var/zsh/history
-
-cdpath=($HOME/projects $DROPBOX/doc $DROPBOX/doc/classes $DROPBOX/research/projects $DROPBOX/research/mypaper $DROPBOX)
 
 if [ $TERM = dumb ]; then export PS1="$ "; else PS1='
 '"$PS1"; fi
 
+source $DROPBOX/lib/fzf/zshrc
+
+loadrc $ZPREZTO_RC/aliases
 loadall $ZDOTDIR/aliases
 loadrc $HOME/.zshrc
-
-# if [ -d $HOME/.rvm/bin ]; then path+=$HOME/.rvm/bin; fi # Add RVM to PATH for scripting

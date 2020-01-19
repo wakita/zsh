@@ -1,3 +1,3 @@
-loadrc $ZDOTDIR/.zprezto/runcom/zprofile
+loadrc $ZPREZTO_RC/zprofile
 loadall $ZDOTDIR/profile
 loadrc $HOME/.zprofile
